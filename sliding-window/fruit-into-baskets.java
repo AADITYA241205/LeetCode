@@ -10,23 +10,24 @@ class Solution {
 
             map.put(fruits[high] , map.getOrDefault(fruits[high],0)+1);
 
-            sum+=fruits[high];
 
-            while(map.size()>k){
+            while(map.size()>2){
 
                 map.put(fruits[low] , map.getOrDefault(fruits[low],0)-1);
-                sum-=fruits[low];
+                
                 if(map.get(fruits[low])==0){
                     map.remove(fruits[low]);
                 }
                 low++;
             }
 
-            if(map.size()==k){
-                msum = Math.max(sum)
+            if(map.size()==2){
+                msum = Math.max(msum , high-low+1);
             }
 
         }
+
+        return msum;
         
     }
 }
