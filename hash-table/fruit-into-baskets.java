@@ -23,9 +23,9 @@ class Solution {
                 low++;
             }
 
-            if(map.size()==2){
+            // if(map.size()==2){
                 msum = Math.max(msum , high-low+1);
-            }
+            // }
 
         }
 
