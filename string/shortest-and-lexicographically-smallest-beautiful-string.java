@@ -29,6 +29,9 @@ class Solution {
                             str = new StringBuilder(s.substring(low,high+1));
                             break;
                         }
+                        else if (s.charAt(i) > str.charAt(j)) {
+                            break;
+                        }
                         i++;
                         j++;
                     }
