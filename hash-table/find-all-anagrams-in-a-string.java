@@ -28,15 +28,18 @@ class Solution {
             sar[s.charAt(high) - 'a']++;
             low++;
 
+             flag = true;
+
             for (int i = 0; i < 26; i++) {
                 if (par[i] != sar[i]) {
                     flag = false;
+                    break;
                 }
             }
 
             if(flag)ans.add(low);
 
-            flag = true;
+           
             
         }
         return ans;
