@@ -21,11 +21,9 @@ class Solution {
                     st++;
                     c++;
                 }
-                if (st<high && nums[st] == 1){
+                if (st<=high && nums[st] == 1){
                     c++;
                 }
-
-                if(low==high && nums[low]==1)c++;
             }
         }
         return c;
