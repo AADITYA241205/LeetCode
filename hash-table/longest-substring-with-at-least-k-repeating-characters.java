@@ -3,7 +3,7 @@ class Solution {
 
         int ans = 0;
 
-        for(int i = 0 ; i<26 ; i++){
+        for(int i = 1 ; i<=26 ; i++){
 
             int[] arr = new int[26];
 
