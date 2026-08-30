@@ -21,7 +21,7 @@ class Solution {
         }
 
         int ans = Math.max(imin,imax)+1;
-        
+        ans = Math.min(ans, nums.length - Math.min(imin, imax));
         if(imin>imax){
             ans = Math.min(ans,imin+ 1 + (nums.length - imax));
             ans = Math.min(ans,imax+1 +(nums.length - imin));
