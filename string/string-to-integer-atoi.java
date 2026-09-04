@@ -1,42 +1,45 @@
 class Solution {
     public int myAtoi(String s) {
 
-        s = s.trim();
+        int i = 0;
 
-        long ans = 0;
-
-        if (s.length() == 0) return 0;
+        while(i<s.length() && s.charAt(i)==' '){
+            i++;
+        }
 
         int sign = 1;
-        int i = 0;
-        if (s.charAt(0) == '-') {
-            sign = -1;
-            i++;
-        } else if (s.charAt(0) == '+') {
+        if(s.charAt(i)=='-'){
+            sign=-1;
             i++;
         }
 
-        if (i == s.length() || !Character.isDigit(s.charAt(i)))
-            return 0;
+        long ans = 0;
+        
+        return num(s,i,sign,ans);
+    }
 
-        while (i < s.length() && Character.isDigit(s.charAt(i))) {
-
-            int digit = s.charAt(i) - '0';
-
-            if (sign == -1) {
-                if (ans > Integer.MAX_VALUE / 10 ||
-                        (ans == Integer.MAX_VALUE / 10 && digit > 8))
-                    return Integer.MIN_VALUE;
-            } else {
-                if (ans > Integer.MAX_VALUE / 10 ||
-                        (ans == Integer.MAX_VALUE / 10 && digit > 7))
-                    return Integer.MAX_VALUE;
-            }
-
-            ans = ans * 10 + digit;
-            i++;
+    public int num(String s , int i , int sign , long ans){
+        
+        if(i==s.length()){
+            if(sign==-1)ans*=sign;
+            return (int)ans;
         }
 
-        return (int) (ans * sign);
+        char a = s.charAt(i);
+        if(a<'0' || a>'9'){
+            if(sign==-1)ans*=sign;
+            return (int)ans;
+        }   
+
+        int dg = a - '0';
+
+        ans = ans*10+dg;
+        if(sign==1 && ans>Integer.MAX_VALUE){
+            return Integer.MAX_VALUE;
+        }
+        else if(sign==-1 && (ans*sign)<Integer.MIN_VALUE){
+            return Integer.MIN_VALUE;
+        }
+        return num(s,i+1,sign,ans);
     }
 }
