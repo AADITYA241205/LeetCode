@@ -15,6 +15,10 @@ class Solution {
             sign=-1;
             i++;
         }
+        else if(s.charAt(i)=='+'){
+            sign = 1;
+            i++;
+        }
 
         long ans = 0;
         
