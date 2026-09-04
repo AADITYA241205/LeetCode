@@ -6,6 +6,9 @@ class Solution {
         while(i<s.length() && s.charAt(i)==' '){
             i++;
         }
+        if(i == s.length()){
+    return 0;
+}
 
         int sign = 1;
         if(s.charAt(i)=='-'){
