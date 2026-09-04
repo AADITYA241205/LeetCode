@@ -6,14 +6,14 @@ class Solution {
         for(int i = 0 ; i<nums.length ; i++){
             max = Math.max(max,nums[i]);
 
-            int min = 101;
+            int min = Integer.MAX_VALUE;
             for(int j = i ; j<nums.length ; j++){
                 min = Math.min(min,nums[j]);
             }
 
-            // System.out.println(max +" "+ min);
+            System.out.println(max +" "+ min);
 
-            if(max-min<=k){
+            if((max-min)<=k){
                 ans = i;
                 break;
             }
