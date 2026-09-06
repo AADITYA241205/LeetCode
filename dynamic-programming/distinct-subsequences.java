@@ -1,23 +1,31 @@
 class Solution {
-    int count = 0;
+
     public int numDistinct(String s, String t) {
-        sub(s,t,0,0);
-        return count;
-        
+        int[][] dp = new int[s.length()][t.length()];
+        for(int i = 0 ; i<s.length() ; i++){
+            for(int j = 0 ; j<t.length() ; j++){
+                dp[i][j] = -1;
+            }
+        }
+
+        return sub(s,t,0,0,dp);
     }
-    public void sub(String s , String t , int i , int j){
+
+    public int sub(String s , String t , int i , int j, int[][] dp){
         if(j==t.length()){
-            count++;
-            return;
-        }
+            return 1;
+        }        
         if(i==s.length()){
-            return;
+            return 0;
         }
 
+        if(dp[i][j]!=-1)return dp[i][j];
+
+        int take = 0;
         if(s.charAt(i)==t.charAt(j)){
-            sub(s,t,i+1,j+1); 
+            take = sub(s,t,i+1,j+1,dp); 
         }
 
-         sub(s,t,i+1,j);
+        return dp[i][j] = take + sub(s,t,i+1,j,dp);
     }
 }
