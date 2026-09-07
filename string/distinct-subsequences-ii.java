@@ -1,18 +1,18 @@
 class Solution {
-    HashSet<String> set = new HashSet<>();
-    public void sub(String s , int i , String str){
-        if (i == s.length()) {
-            set.add(str);
-            return;
-        }
-        sub(s, i+1, str+s.charAt(i));
-
-        sub(s, i+1, str);
-
-    }
     public int distinctSubseqII(String s) {
-        sub(s,0,"");;
 
-        return set.size()-1;
+        long mod = 1000000007;
+        long total = 1;
+        long[] arr = new long[26];
+
+        for(int i = 0 ; i<s.length() ; i++){
+            int id = s.charAt(i)-'a';
+            long old = total;
+            total = (2*total - arr[id] + mod) % mod;
+            arr[id] = old ;
+
+        }
+        
+        return (int)((total-1+mod)%mod);
     }
 }
