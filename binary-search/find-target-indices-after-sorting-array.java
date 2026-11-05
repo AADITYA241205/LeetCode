@@ -10,6 +10,7 @@ class Solution {
             }
             nums[j+1]=key;
         }
+        
         List<Integer> ans = new ArrayList<>();
         for(int i = 0 ; i<nums.length ; i++){
             if(nums[i]==target){
